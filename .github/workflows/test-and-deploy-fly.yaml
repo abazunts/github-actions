@@ -4,8 +4,7 @@ on:
   push:
     branches:
       - staging # указываем название ветки в которую хотим пушить и запускать наш деплой
-env:
-  FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+
 jobs:
   tests:
     name: Tests # название конктретной работы в pipeline
@@ -27,4 +26,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: superfly/flyctl-actions/setup-flyctl@master # This is the action
-      - run:  deploy
+      - run: flyctl deploy --remote-only
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
