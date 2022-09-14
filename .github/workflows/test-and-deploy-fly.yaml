@@ -6,18 +6,18 @@ on:
       - staging # указываем название ветки в которую хотим пушить и запускать наш деплой
 
 jobs:
-  tests:
-    name: Tests # название конктретной работы в pipeline
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout  # клонируем репозиторый
-        uses: actions/checkout@v2
-
-      - name: Install dependencies
-        run: yarn # устанавливаем зависимости
-
-      - name: Test
-        run: yarn test # запускаем скрипт тестами
+#  tests:
+#    name: Tests # название конктретной работы в pipeline
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Checkout  # клонируем репозиторый
+#        uses: actions/checkout@v2
+#
+#      - name: Install dependencies
+#        run: yarn # устанавливаем зависимости
+#
+#      - name: Test
+#        run: yarn test # запускаем скрипт тестами
 
   deploy:
     name: Deploy
