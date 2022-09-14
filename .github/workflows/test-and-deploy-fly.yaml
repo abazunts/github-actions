@@ -27,4 +27,4 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: superfly/flyctl-actions/setup-flyctl@master # This is the action
-      - run:  flyctl deploy --remote-only
+      - run:  deploy
