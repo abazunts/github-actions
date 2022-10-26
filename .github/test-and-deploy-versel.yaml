@@ -1,0 +1,34 @@
+name: Test & Deploy
+on:
+  push:
+    branches:
+      - staging
+jobs:
+  tests:
+    name: Tests # название конктретной работы в pipeline
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout  # клонируем репозиторый
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: yarn # устанавливаем зависимости
+
+      - name: Test
+        run: yarn test # запускаем скрипт тестами
+  deploy:
+    runs-on: ubuntu-latest
+    needs: tests # ук
+    steps:
+      - uses: actions/checkout@v2
+      #  your build commands
+      # - run: |
+      #    ng build --prod
+      - uses: amondnet/vercel-action@v20 #deploy
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }} # Required
+          github-token: ${{ secrets.GITHUB_TOKEN }} #Optional
+          vercel-args: '--prod' #Optional
+          vercel-org-id: ${{ secrets.ORG_ID}}  #Required
+          vercel-project-id: ${{ secrets.PROJECT_ID}} #Required
+          working-directory: ./sub-directory
