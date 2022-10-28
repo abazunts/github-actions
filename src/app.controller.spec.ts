@@ -15,8 +15,8 @@ describe('AppController', () => {
   });
 
   describe('root', () => {
-    it('should return "Hello Vercel Project"', () => {
-      expect(appController.getHello()).toBe('Hello Vercel Project');
+    it('should return "Hello Vercel Project!"', () => {
+      expect(appController.getHello()).toBe('Hello Vercel Project!');
     });
   });
 });
